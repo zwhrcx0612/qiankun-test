@@ -3,13 +3,26 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> | 
-      <router-link to="/micro-app-one">micro-app-one</router-link>
+      <router-link :to="microAppOne">micro-app-one</router-link> | 
+      <router-link to="/micro-app-two">micro-app-two</router-link>
     </div>
     <router-view/>
     <div id="container"></div>
   </div>
 </template>
 
+<script>
+export default {
+  name:'App',
+  computed:{
+    microAppOne:{
+      get(){
+        return process.env.NODE_ENV === 'development' ? '/micro-app-one' : '/app-vue-one'
+      }
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
